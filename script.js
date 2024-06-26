@@ -1,6 +1,12 @@
 var dp = document.getElementById('dp').value;
-var serie = getElementById;
+var serie = document.getElementById("serie").value;
+var ap = document.getElementById("ap").value;
 
-calcnotas(dp, serie, ap,){
+function calcnotas(dp, serie, ap, ) {
+    MA = ap * 9;
+    return MA;
+}
+
+function mf(ma, ex){
 
 }
