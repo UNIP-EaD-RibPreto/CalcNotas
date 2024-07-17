@@ -1,0 +1,87 @@
+function calcular() {
+    // Obter valores dos campos
+    const anoIngresso = document.getElementById('anoIngresso').value;
+    const tipoDisciplina = document.getElementById('tipoDisciplina').value;
+    const frequencia = parseFloat(document.getElementById('frequencia').value);
+    const prova1 = parseFloat(document.getElementById('prova1').value) || 0;
+    const prova2 = parseFloat(document.getElementById('prova2').value) || 0;
+    const prova3 = parseFloat(document.getElementById('prova3').value) || 0;
+    const pim1 = parseFloat(document.getElementById('pim1').value) || 0;
+    const pim2 = parseFloat(document.getElementById('pim2').value) || 0;
+    const relatorio1 = parseFloat(document.getElementById('relatorio1').value) || 0;
+    const relatorio2 = parseFloat(document.getElementById('relatorio2').value) || 0;
+    const relatorioFinal = parseFloat(document.getElementById('relatorioFinal').value) || 0;
+    const trabalhoCurso = parseFloat(document.getElementById('trabalhoCurso').value) || 0;
+    const banca = parseFloat(document.getElementById('banca').value) || 0;
+    const exame = parseFloat(document.getElementById('exame').value) || 0;
+
+    // Validar frequência
+    if (frequencia < 75) {
+        alert('Reprovado por frequência!');
+        return;
+    }
+
+    // Esconder/Mostrar seções de acordo com o tipo de disciplina
+    mostrarSecao('secaoProvas', tipoDisciplina.includes('prova'));
+    mostrarSecao('secaoPims', tipoDisciplina === 'teoricaTecnologica');
+    mostrarSecao('secaoRelatorios', tipoDisciplina === 'praticaLicenciatura');
+
+    // Limpar campos de seções não utilizadas
+    limparSecao('secaoProvas', tipoDisciplina !== 'teoricaTradicional');
+    limparSecao('secaoPims', tipoDisciplina !== 'teoricaTecnologica');
+    limparSecao('secaoRelatorios', tipoDisciplina !== 'praticaLicenciatura');
+
+    // Calcular média da disciplina (MD)
+    let md = 0;
+    switch (tipoDisciplina) {
+        case 'teoricaTradicional':
+            md = calcularMediaTeoricaTradicional(prova1, prova2, prova3);
+            break;
+        case 'teoricaTecnologica':
+            md = calcularMediaTeoricaTecnologica(prova1, prova2, prova3, pim1, pim2);
+            break;
+        case 'praticaLicenciatura':
+            md = calcularMediaPraticaLicenciatura(relatorio1, relatorio2, relatorioFinal);
+            break;
+        case 'praticaLaboratorio':
+            md = calcularMediaPraticaLaboratorio(relatorio1, relatorio2, prova1);
+            break;
+        case 'tcc':
+            md = calcularMediaTcc(trabalhoCurso, banca);
+            break;
+        // Implementar cálculo para Estágio e PIM
+    }
+
+    // Arredondamento da MD
+    md = arredondarMedia(md, anoIngresso);
+
+    // Calcular média final (MF)
+    let mf = 0;
+    if (md < (anoIngresso === '2022' ? 6 : 7)) {
+        mf = calcularMediaFinalComExame(md, exame);
+    } else {
+        mf = md;
+    }
+
+    // Arredondamento da MF
+    mf = arredondarMedia(mf, anoIngresso);
+
+    // Exibir resultados
+    document.getElementById('md').textContent = mf.toFixed(1);
+    document.getElementById('mf').textContent = mf.toFixed(1);
+
+    if (mf >= (anoIngresso === '2022' ? 5 : 5)) {
+        alert('Aprovado!');
+    } else {
+        alert('Reprovado!');
+    }
+}
+
+function mostrarSecao(secaoId, mostrar) {
+    const secao = document.getElementById(secaoId);
+    secao.style.display = mostrar ? 'block' : 'none';
+}
+
+function limparSecao(secaoId, limpar) {
+    if (limpar) {
+        const inputs = document.getElementById(secaoId).querySelectorAll
