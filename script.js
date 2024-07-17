@@ -8,14 +8,10 @@ function calcular() {
   const prova3 = parseFloat(document.getElementById("prova3").value) || 0;
   const pim1 = parseFloat(document.getElementById("pim1").value) || 0;
   const pim2 = parseFloat(document.getElementById("pim2").value) || 0;
-  const relatorio1 =
-    parseFloat(document.getElementById("relatorio1").value) || 0;
-  const relatorio2 =
-    parseFloat(document.getElementById("relatorio2").value) || 0;
-  const relatorioFinal =
-    parseFloat(document.getElementById("relatorioFinal").value) || 0;
-  const trabalhoCurso =
-    parseFloat(document.getElementById("trabalhoCurso").value) || 0;
+  const relatorio1 = parseFloat(document.getElementById("relatorio1").value) || 0;
+  const relatorio2 = parseFloat(document.getElementById("relatorio2").value) || 0;
+  const relatorioFinal = parseFloat(document.getElementById("relatorioFinal").value) || 0;
+  const trabalhoCurso = parseFloat(document.getElementById("trabalhoCurso").value) || 0;
   const banca = parseFloat(document.getElementById("banca").value) || 0;
   const exame = parseFloat(document.getElementById("exame").value) || 0;
 
