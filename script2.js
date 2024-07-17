@@ -85,3 +85,45 @@ function mostrarSecao(secaoId, mostrar) {
 function limparSecao(secaoId, limpar) {
     if (limpar) {
         const inputs = document.getElementById(secaoId).querySelectorAll
+
+    function calcularMediaTeoricaTradicional(prova1, prova2, prova3) {
+    return (9 * prova1 + prova2 + prova3) / 10;
+}
+
+function calcularMediaTeoricaTecnologica(prova1, prova2, prova3, pim1, pim2) {
+    return (7 * (prova1 + prova2 + prova3) + 2 * (pim1 + pim2)) / 10;
+}
+
+function calcularMediaPraticaLicenciatura(relatorio1, relatorio2, relatorioFinal) {
+    return (2 * (relatorio1 + relatorio2) + 7 * relatorioFinal) / 10;
+}
+
+function calcularMediaPraticaLaboratorio(relatorio1, relatorio2, prova1) {
+    return (3 * (relatorio1 + relatorio2) + 7 * prova1) / 10;
+}
+
+function calcularMediaTcc(trabalhoCurso, banca) {
+    return (7 * trabalhoCurso + 3 * banca) / 10;
+}
+
+function calcularMediaFinalComExame(md, exame) {
+    return (md + exame) / 2;
+}
+
+function arredondarMedia(media, anoIngresso) {
+    if (anoIngresso === '2022' && media >= 5.7 && media < 6) {
+        media = 6;
+    } else if (media >= 6.7 && media < 7) {
+        media = 7;
+    }
+    return media;
+}
+
+function limparSecao(secaoId, limpar) {
+    if (limpar) {
+        const inputs = document.getElementById(secaoId).querySelectorAll('input[type="number"]');
+        for (const input of inputs) {
+            input.value = '';
+        }
+    }
+}
