@@ -14,6 +14,7 @@
     <!-- Favicons -->
     <link href="https://www.unip.br/assets/img/favicon.png" rel="icon" />
   </head>
+
   <body>
     <header>
       <h1>Cálculo de Notas UNIP</h1>
@@ -23,7 +24,7 @@
       <label for="anoIngresso">Ano de Ingresso:</label>
       <select id="anoIngresso">
         <option value="2022">2022 ou Anterior</option>
-        <option value="2023">2023 em diante</option>
+        <option value="2023" selected>2023 em diante</option>
       </select>
 
       <label for="tipoDisciplina">Tipo de Disciplina:</label>
@@ -32,15 +33,12 @@
           Teórica/Estudos Disciplinares (Tradicional)
         </option>
         <option value="teoricaTecnologica">
-          Teórica/Estudos Disciplinares (Tecnológica)
+          Teórica/Estudos Disciplinares (Tecnólogo)
         </option>
         <option value="praticaLicenciatura">
           Prática (Licenciaturas, Farmácia e Enfermagem)
         </option>
         <option value="praticaLaboratorio">Prática (Laboratório)</option>
-        <option value="tcc">Trabalho de Curso</option>
-        <option value="estagio">Estágio Curricular</option>
-        <option value="pim">Projeto Interdisciplinar Multidisciplinar</option>
       </select>
 
       <div id="secaoProvas">
@@ -77,7 +75,7 @@
         <label for="exame">Exame:</label>
         <input type="number" id="exame" min="0" max="10" step="0.1" />
       </div>
-      
+
       <button type="button" onclick="calcular()">Calcular</button>
     </div>
 
@@ -98,8 +96,6 @@
           <li>Relatório 1: <span id="detalheRelatorio1"></span></li>
           <li>Relatório 2: <span id="detalheRelatorio2"></span></li>
           <li>Relatório Final: <span id="detalheRelatorioFinal"></span></li>
-          <li>Trabalho de Curso: <span id="detalheTrabalhoCurso"></span></li>
-          <li>Banca: <span id="detalheBanca"></span></li>
           <li>Exame: <span id="detalheExame"></span></li>
         </ul>
       </div>
@@ -110,50 +106,80 @@
     </div>
 
     <div id="resumo">
-      Cálculo Detalhado de Notas na Universidade Paulista (UNIP) - Guia Completo
-      O sistema de avaliação da UNIP varia de acordo com o ano de ingresso do
-      aluno e o tipo de disciplina. Para garantir que você entenda as regras e
-      as aplique corretamente, este guia detalhado vai te acompanhar passo a
-      passo, com exemplos práticos e informações adicionais. I. Regras para
-      Alunos que Ingressaram em 2022 ou Antes: 1. Frequência: Condição
-      Essencial: A aprovação em qualquer disciplina exige frequência mínima de
-      75%. Reprovação Automática: Se a frequência for inferior a 75%, o aluno é
-      automaticamente reprovado na disciplina, independentemente de suas notas
-      nas avaliações. 2. Média da Disciplina (MD): Cálculo Específico por Tipo
-      de Disciplina: A MD é calculada de acordo com a natureza da disciplina:
-      Disciplinas Teóricas e Estudos Disciplinares (Cursos Tradicionais):
-      Fórmula: MD = (9 x Provas + 1 x AVA) / 10 Componentes: Provas: Soma das
-      notas das 3 provas (cada uma com valor entre 0 e 10 pontos). AVA:
-      Avaliação Virtual (entre 0 e 10 pontos). Disciplinas Teóricas e Estudos
-      Disciplinares (Cursos Tecnológicos - exceto Práticas de Radiologia e
-      Estética): Fórmula: MD = (7 x Provas + 2 x PIM + 1 x AVA) / 10
-      Componentes: Provas: Soma das notas das 3 provas (cada uma com valor entre
-      0 e 10 pontos). PIM: Projeto Interdisciplinar Multidisciplinar (entre 0 e
-      10 pontos). AVA: Avaliação Virtual (entre 0 e 10 pontos). Disciplinas
-      Práticas (Licenciaturas, Farmácia e Enfermagem): Fórmula: MD = (2 x
-      Relatório + 7 x Relatório Final + 1 x CHAT) / 10 Componentes: Relatório:
-      Soma das notas dos 2 relatórios (cada um com valor entre 0 e 10 pontos).
-      Relatório Final: Nota do relatório final (entre 0 e 10 pontos). CHAT:
-      Avaliação da participação no chat online (entre 0 e 10 pontos).
-      Disciplinas Práticas (Laboratório): Fórmula: MD = (3 x Relatório + 7 x
-      Prova) / 10 Componentes: Relatório: Soma das notas dos 2 relatórios (cada
-      um com valor entre 0 e 10 pontos). Prova: Nota da prova prática (entre 0 e
-      10 pontos). Trabalho de Curso: Fórmula: MD = (7 x Trabalho + 3 x Banca) /
-      10 Componentes: Trabalho: Nota do trabalho de curso (entre 0 e 10 pontos).
-      Banca: Nota da banca examinadora do TCC (entre 0 e 10 pontos). Estágio
-      Curricular: Cálculo Específico: A média do estágio é calculada de acordo
-      com as normas específicas de cada curso. Avaliação Geral: Geralmente
-      envolve avaliação de desempenho e relatório final. Projeto
-      Interdisciplinar Multidisciplinar (PIM): Cálculo Específico: A média do
-      PIM é calculada de acordo com as normas específicas de cada curso.
-      Avaliação Geral: Geralmente envolve avaliação de trabalho em equipe e
-      relatório final. 3. Média Final (MF): Aprovação Direta: Se a MD for igual
-      ou superior a 6,0, o aluno está aprovado e a MF é igual à MD. Necessidade
-      de Exame: Se a MD for inferior a 6,0, o aluno precisa fazer o Exame para
-      ter a chance de ser aprovado. Cálculo da MF: A MF é calculada como a média
-      aritmética da MD e da nota do Exame: MF = (MD + Exame) / 2. Nota Mínima
-      para Aprovação: O aluno precisa obter uma MF igual ou superior a 5,0 para
-      ser aprovado.
+      <h2>
+        Cálculo Detalhado de Notas na Universidade Paulista (UNIP) - Guia
+        Completo
+      </h2>
+      <p>
+        O sistema de avaliação da UNIP varia de acordo com o
+        <strong>ano de ingresso do aluno</strong> e o
+        <strong>tipo de disciplina</strong>. Para garantir que você entenda as
+        regras e as aplique corretamente, este guia detalhado vai te acompanhar
+        passo a passo, com exemplos práticos e informações adicionais.
+      </p>
+      <h3>I. Regras para Alunos que Ingressaram em 2022 ou Antes:</h3>
+      <h4>1. Frequência:</h4>
+      <ul>
+        <li>
+          <strong>Condição Essencial:</strong> A aprovação em qualquer
+          disciplina exige frequência mínima de 75%.
+        </li>
+        <li>
+          <strong>Reprovação Automática:</strong> Se a frequência for inferior a
+          75%, o aluno é automaticamente reprovado na disciplina,
+          independentemente de suas notas nas avaliações.
+        </li>
+      </ul>
+      <h4>2. Média da Disciplina (MD):</h4>
+      <p>
+        Cálculo Específico por Tipo de Disciplina: A MD é calculada de acordo
+        com a natureza da disciplina:
+      </p>
+      <ul>
+        <h5>
+          Disciplinas Teóricas e Estudos Disciplinares (Cursos Tradicionais):
+        </h5>
+        <ul>
+          <li class="formula">
+            Fórmula: MD = (9 x Provas + 1 x AVA) / 10
+          </li>
+          <ul>
+            <li>
+              <strong>Provas:</strong> Soma das notas das 3 provas (cada uma com valor entre 0 e 10 pontos).
+            </li>
+            <li>
+              <strong>AVA:</strong> Avaliação Virtual (entre 0 e 10 pontos).
+            </li>
+          </ul>
+        </ul>
+      </ul>
+      Fórmula: MD = (7 x Provas + 2 x PIM + 1 x AVA) / 10 Componentes: Provas:
+      Soma das notas das 3 provas (cada uma com valor entre 0 e 10 pontos). PIM:
+      Projeto Interdisciplinar Multidisciplinar (entre 0 e 10 pontos). AVA:
+      Avaliação Virtual (entre 0 e 10 pontos). Disciplinas Práticas
+      (Licenciaturas, Farmácia e Enfermagem): Fórmula: MD = (2 x Relatório + 7 x
+      Relatório Final + 1 x CHAT) / 10 Componentes: Relatório: Soma das notas
+      dos 2 relatórios (cada um com valor entre 0 e 10 pontos). Relatório Final:
+      Nota do relatório final (entre 0 e 10 pontos). CHAT: Avaliação da
+      participação no chat online (entre 0 e 10 pontos). Disciplinas Práticas
+      (Laboratório): Fórmula: MD = (3 x Relatório + 7 x Prova) / 10 Componentes:
+      Relatório: Soma das notas dos 2 relatórios (cada um com valor entre 0 e 10
+      pontos). Prova: Nota da prova prática (entre 0 e 10 pontos). Trabalho de
+      Curso: Fórmula: MD = (7 x Trabalho + 3 x Banca) / 10 Componentes:
+      Trabalho: Nota do trabalho de curso (entre 0 e 10 pontos). Banca: Nota da
+      banca examinadora do TCC (entre 0 e 10 pontos). Estágio Curricular:
+      Cálculo Específico: A média do estágio é calculada de acordo com as normas
+      específicas de cada curso. Avaliação Geral: Geralmente envolve avaliação
+      de desempenho e relatório final. Projeto Interdisciplinar Multidisciplinar
+      (PIM): Cálculo Específico: A média do PIM é calculada de acordo com as
+      normas específicas de cada curso. Avaliação Geral: Geralmente envolve
+      avaliação de trabalho em equipe e relatório final. 3. Média Final (MF):
+      Aprovação Direta: Se a MD for igual ou superior a 6,0, o aluno está
+      aprovado e a MF é igual à MD. Necessidade de Exame: Se a MD for inferior a
+      6,0, o aluno precisa fazer o Exame para ter a chance de ser aprovado.
+      Cálculo da MF: A MF é calculada como a média aritmética da MD e da nota do
+      Exame: MF = (MD + Exame) / 2. Nota Mínima para Aprovação: O aluno precisa
+      obter uma MF igual ou superior a 5,0 para ser aprovado.
     </div>
   </body>
 </html>

@@ -2,7 +2,6 @@ function calcular() {
     // Obter valores dos campos
     const anoIngresso = document.getElementById('anoIngresso').value;
     const tipoDisciplina = document.getElementById('tipoDisciplina').value;
-    const frequencia = parseFloat(document.getElementById('frequencia').value);
     const prova1 = parseFloat(document.getElementById('prova1').value) || 0;
     const prova2 = parseFloat(document.getElementById('prova2').value) || 0;
     const prova3 = parseFloat(document.getElementById('prova3').value) || 0;
@@ -11,15 +10,7 @@ function calcular() {
     const relatorio1 = parseFloat(document.getElementById('relatorio1').value) || 0;
     const relatorio2 = parseFloat(document.getElementById('relatorio2').value) || 0;
     const relatorioFinal = parseFloat(document.getElementById('relatorioFinal').value) || 0;
-    const trabalhoCurso = parseFloat(document.getElementById('trabalhoCurso').value) || 0;
-    const banca = parseFloat(document.getElementById('banca').value) || 0;
     const exame = parseFloat(document.getElementById('exame').value) || 0;
-
-    // Validar frequência
-    if (frequencia < 75) {
-        alert('Reprovado por frequência!');
-        return;
-    }
 
     // Esconder/Mostrar seções de acordo com o tipo de disciplina
     mostrarSecao('secaoProvas', tipoDisciplina.includes('prova'));
