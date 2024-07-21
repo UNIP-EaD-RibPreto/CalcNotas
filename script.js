@@ -1,6 +1,7 @@
 function calcular() {
     // Obter valores dos campos
     const anoIngresso = document.getElementById('anoIngresso').value;
+    const dp = document.getElementById('dp').value;
     const tipoDisciplina = document.getElementById('tipoDisciplina').value;
     const prova1 = parseFloat(document.getElementById('prova1').value) || 0;
     const prova2 = parseFloat(document.getElementById('prova2').value) || 0;
@@ -13,14 +14,16 @@ function calcular() {
     const exame = parseFloat(document.getElementById('exame').value) || 0;
 
     // Esconder/Mostrar seções de acordo com o tipo de disciplina
-    mostrarSecao('secaoProvas', tipoDisciplina.includes('prova'));
+    mostrarSecao('secaoProvas', tipoDisciplina === "teoricaTradicional");
     mostrarSecao('secaoPims', tipoDisciplina === 'teoricaTecnologica');
     mostrarSecao('secaoRelatorios', tipoDisciplina === 'praticaLicenciatura');
+    mostrarSecao('secaoLaboratorio', tipoDisciplina === 'praticaLaboratorio');
 
     // Limpar campos de seções não utilizadas
     limparSecao('secaoProvas', tipoDisciplina !== 'teoricaTradicional');
     limparSecao('secaoPims', tipoDisciplina !== 'teoricaTecnologica');
     limparSecao('secaoRelatorios', tipoDisciplina !== 'praticaLicenciatura');
+    limparSecao('secaoLaboratorio', tipoDisciplina !== 'praticaLaboratorio');
 
     // Calcular média da disciplina (MD)
     let md = 0;
@@ -75,9 +78,13 @@ function mostrarSecao(secaoId, mostrar) {
 
 function limparSecao(secaoId, limpar) {
     if (limpar) {
-        const inputs = document.getElementById(secaoId).querySelectorAll
+        const inputs = document.getElementById(secaoId).querySelectorAll('input[type="number"]');
+        for (const input of inputs) {
+            input.value = '';
+        }
     }
 }
+
 function calcularMediaTeoricaTradicional(prova1, prova2, prova3) {
     return (9 * prova1 + prova2 + prova3) / 10;
 }
@@ -109,13 +116,4 @@ function arredondarMedia(media, anoIngresso) {
         media = 7;
     }
     return media;
-}
-
-function limparSecao(secaoId, limpar) {
-    if (limpar) {
-        const inputs = document.getElementById(secaoId).querySelectorAll('input[type="number"]');
-        for (const input of inputs) {
-            input.value = '';
-        }
-    }
 }

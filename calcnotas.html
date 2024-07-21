@@ -26,10 +26,16 @@
         <option value="2022">2022 ou Anterior</option>
         <option value="2023" selected>2023 em diante</option>
       </select>
+      
+      <label for="dp">Situação:</label>
+      <select id="dp">
+        <option value="regular" selected>Regular do semestre</option>
+        <option value="dp">Dependência / Adaptação</option>
+      </select>
 
       <label for="tipoDisciplina">Tipo de Disciplina:</label>
-      <select id="tipoDisciplina">
-        <option value="teoricaTradicional">
+      <select id="tipoDisciplina" onchange="calcular()">
+        <option value="teoricaTradicional" >
           Teórica/Estudos Disciplinares (Tradicional)
         </option>
         <option value="teoricaTecnologica">
@@ -41,7 +47,7 @@
         <option value="praticaLaboratorio">Prática (Laboratório)</option>
       </select>
 
-      <div id="secaoProvas">
+      <div id="secaoProvas" class>
         <label for="prova1">Prova 1:</label>
         <input type="number" id="prova1" min="0" max="10" step="0.1" />
 
@@ -107,8 +113,7 @@
 
     <div id="resumo">
       <h2>
-        Cálculo Detalhado de Notas na Universidade Paulista (UNIP) - Guia
-        Completo
+        Cálculo Detalhado de Notas na Universidade Paulista (UNIP) - Guia Completo
       </h2>
       <p>
         O sistema de avaliação da UNIP varia de acordo com o
@@ -136,9 +141,9 @@
         com a natureza da disciplina:
       </p>
       <ul>
-        <h5>
+        <h4>
           Disciplinas Teóricas e Estudos Disciplinares (Cursos Tradicionais):
-        </h5>
+        </h4>
         <ul>
           <li class="formula">
             Fórmula: MD = (9 x Provas + 1 x AVA) / 10
