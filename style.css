@@ -1,15 +1,16 @@
 @charset "UTF-8";
 
 :root {
-  --color-white: #fff;
-  --color-black: #000;
-  --color-quaternary: #075ebd;
-  --color-tertiary: #07366a;
-  --color-primary: #3689e2;
-  --color-success: #208436;
-  --color-secondary: #6c757d;
-  --color-warning: #f7e704;
+    --color-white: #fff;
+    --color-black: #000;
+    --color-quaternary: #075ebd;
+    --color-tertiary: #07366a;
+    --color-primary: #3689e2;
+    --color-success: #208436;
+    --color-secondary: #6c757d;
+    --color-warning: #f7e704;
 }
+
 body {
     font-family: sans-serif;
     margin: 0;
@@ -65,7 +66,12 @@ button:hover {
 }
 
 /* Esconder seções inicialmente */
-#secaoProvas, #secaoPims, #secaoRelatorios {
+#resumo,
+#detalhesMD,
+#secaoAva,
+#secaoPims,
+#secaoRelatorios,
+#secaoExame {
     display: none;
 }
 

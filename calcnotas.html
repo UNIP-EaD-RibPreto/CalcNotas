@@ -21,21 +21,21 @@
     </header>
 
     <div id="formCalculo">
+      <label for="dp">Situação:</label>
+      <select id="dp" onchange="selecaoItens()">
+        <option value="regular" selected>Regular do semestre</option>
+        <option value="dp">Dependência / Adaptação</option>
+      </select>
+
       <label for="anoIngresso">Ano de Ingresso:</label>
       <select id="anoIngresso">
         <option value="2022">2022 ou Anterior</option>
         <option value="2023" selected>2023 em diante</option>
       </select>
-      
-      <label for="dp">Situação:</label>
-      <select id="dp">
-        <option value="regular" selected>Regular do semestre</option>
-        <option value="dp">Dependência / Adaptação</option>
-      </select>
 
       <label for="tipoDisciplina">Tipo de Disciplina:</label>
-      <select id="tipoDisciplina" onchange="calcular()">
-        <option value="teoricaTradicional" >
+      <select id="tipoDisciplina" onchange="selecaoItens()">
+        <option value="teoricaTradicional">
           Teórica/Estudos Disciplinares (Tradicional)
         </option>
         <option value="teoricaTecnologica">
@@ -47,7 +47,7 @@
         <option value="praticaLaboratorio">Prática (Laboratório)</option>
       </select>
 
-      <div id="secaoProvas" class>
+      <section id="secaoProvas">
         <label for="prova1">Prova 1:</label>
         <input type="number" id="prova1" min="0" max="10" step="0.1" />
 
@@ -56,17 +56,22 @@
 
         <label for="prova3">Prova 3:</label>
         <input type="number" id="prova3" min="0" max="10" step="0.1" />
-      </div>
+      </section>
 
-      <div id="secaoPims">
+      <section id="secaoAva">
+        <label for="ava">AVA (notas dos Questionários):</label>
+        <input type="number" id="ava" min="0" max="10" step="0.1" />
+      </section>
+
+      <section id="secaoPims">
         <label for="pim1">PIM 1:</label>
         <input type="number" id="pim1" min="0" max="10" step="0.1" />
 
         <label for="pim2">PIM 2:</label>
         <input type="number" id="pim2" min="0" max="10" step="0.1" />
-      </div>
+      </section>
 
-      <div id="secaoRelatorios">
+      <section id="secaoRelatorios">
         <label for="relatorio1">Relatório 1:</label>
         <input type="number" id="relatorio1" min="0" max="10" step="0.1" />
 
@@ -75,14 +80,15 @@
 
         <label for="relatorioFinal">Relatório Final:</label>
         <input type="number" id="relatorioFinal" min="0" max="10" step="0.1" />
-      </div>
+      </section>
 
-      <div id="secaoExame">
+      <section id="secaoExame">
         <label for="exame">Exame:</label>
         <input type="number" id="exame" min="0" max="10" step="0.1" />
-      </div>
+      </section>
 
       <button type="button" onclick="calcular()">Calcular</button>
+      <button type="button" onclick="selecaoItens()">Limpar</button>
     </div>
 
     <div id="resultado">
@@ -113,7 +119,8 @@
 
     <div id="resumo">
       <h2>
-        Cálculo Detalhado de Notas na Universidade Paulista (UNIP) - Guia Completo
+        Cálculo Detalhado de Notas na Universidade Paulista (UNIP) - Guia
+        Completo
       </h2>
       <p>
         O sistema de avaliação da UNIP varia de acordo com o
@@ -145,12 +152,11 @@
           Disciplinas Teóricas e Estudos Disciplinares (Cursos Tradicionais):
         </h4>
         <ul>
-          <li class="formula">
-            Fórmula: MD = (9 x Provas + 1 x AVA) / 10
-          </li>
+          <li class="formula">Fórmula: MD = (9 x Provas + 1 x AVA) / 10</li>
           <ul>
             <li>
-              <strong>Provas:</strong> Soma das notas das 3 provas (cada uma com valor entre 0 e 10 pontos).
+              <strong>Provas:</strong> Soma das notas das 3 provas (cada uma com
+              valor entre 0 e 10 pontos).
             </li>
             <li>
               <strong>AVA:</strong> Avaliação Virtual (entre 0 e 10 pontos).
