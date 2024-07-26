@@ -21,8 +21,8 @@
     </header>
 
     <div id="formCalculo">
-      <label for="dp">Situação:</label>
-      <select id="dp" onchange="selecaoItens()">
+      <label for="situacaoDisciplina">Situação:</label>
+      <select id="situacaoDisciplina" onchange="selecaoItens()">
         <option value="regular" selected>Regular do semestre</option>
         <option value="dp">Dependência / Adaptação</option>
       </select>
@@ -41,21 +41,20 @@
         <option value="teoricaTecnologica">
           Teórica/Estudos Disciplinares (Tecnólogo)
         </option>
+        <option value="praticaLaboratorio">
+          Prática (Laboratório)
+        </option>
         <option value="praticaLicenciatura">
           Prática (Licenciaturas, Farmácia e Enfermagem)
         </option>
-        <option value="praticaLaboratorio">Prática (Laboratório)</option>
+        <option value="tcc">
+          Trabalho de Curso
+        </option>
       </select>
 
       <section id="secaoProvas">
-        <label for="prova1">Prova 1:</label>
+        <label for="prova1">Nota da Avaliação ou Substitutiva:</label>
         <input type="number" id="prova1" min="0" max="10" step="0.1" />
-
-        <label for="prova2">Prova 2:</label>
-        <input type="number" id="prova2" min="0" max="10" step="0.1" />
-
-        <label for="prova3">Prova 3:</label>
-        <input type="number" id="prova3" min="0" max="10" step="0.1" />
       </section>
 
       <section id="secaoAva">
@@ -64,22 +63,32 @@
       </section>
 
       <section id="secaoPims">
-        <label for="pim1">PIM 1:</label>
+        <label for="pim1">PIM:</label>
         <input type="number" id="pim1" min="0" max="10" step="0.1" />
 
-        <label for="pim2">PIM 2:</label>
-        <input type="number" id="pim2" min="0" max="10" step="0.1" />
       </section>
 
       <section id="secaoRelatorios">
-        <label for="relatorio1">Relatório 1:</label>
+        <label for="relatorio1">Relatório:</label>
         <input type="number" id="relatorio1" min="0" max="10" step="0.1" />
+      </section>
 
-        <label for="relatorio2">Relatório 2:</label>
-        <input type="number" id="relatorio2" min="0" max="10" step="0.1" />
-
+      <section id="secaoRelatoriosLic">
         <label for="relatorioFinal">Relatório Final:</label>
         <input type="number" id="relatorioFinal" min="0" max="10" step="0.1" />
+      </section>
+
+      <section id="secaoChat">
+        <label for="chat">Chat:</label>
+        <input type="number" id="chat1" min="0" max="1" step="0.1" />
+      </section>
+      
+      <section id="secaoTcc">
+        <label for="tcc">Trabalho de Conclusão:</label>
+        <input type="number" id="tcc1" min="0" max="10" step="0.1" />
+
+        <label for="banca">Banca:</label>
+        <input type="number" id="banca" min="0" max="10" step="0.1" />
       </section>
 
       <section id="secaoExame">
@@ -87,8 +96,8 @@
         <input type="number" id="exame" min="0" max="10" step="0.1" />
       </section>
 
-      <button type="button" onclick="calcular()">Calcular</button>
-      <button type="button" onclick="selecaoItens()">Limpar</button>
+      <button type="button" id="btCalcular" onclick="calcular()">Calcular</button>
+      <button type="button" id="btLimpar" onclick="limparAll()">Limpar</button>
     </div>
 
     <div id="resultado">

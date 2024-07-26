@@ -71,7 +71,9 @@ button:hover {
 #secaoAva,
 #secaoPims,
 #secaoRelatorios,
-#secaoExame {
+#secaoRelatoriosLic,
+#secaoChat,
+#secaoTcc {
     display: none;
 }
 
