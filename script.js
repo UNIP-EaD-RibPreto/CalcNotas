@@ -7,7 +7,7 @@ function selecaoItens() {
     limparAll();
     ocultarAll();
 
-    // Definir qual inputs serão inseridos
+    // Definir quais inputs serão inseridos
     switch (tipoDisciplina) {
         case "teoricaTradicional":
             mostrarSecao("secaoProvas", situacaoDisciplina === "regular" || "dp");
@@ -32,7 +32,7 @@ function selecaoItens() {
             mostrarSecao("secaoExame", situacaoDisciplina === "regular" || "dp");
             break;
         case "tcc":
-            mostrarSecao("secaoTcc", tipoDisciplina === "tcc");
+            mostrarSecao("secaoTcc", situacaoDisciplina === "regular" || "dp");
             break;
     }
 }
@@ -43,51 +43,78 @@ function calcular() {
     const situacaoDisciplina = document.getElementById("situacaoDisciplina").value;
     const tipoDisciplina = document.getElementById("tipoDisciplina").value;
     const prova1 = parseFloat(document.getElementById("prova1").value) || 0;
+    const ava = parseFloat(document.getElementById("ava").value) || 0;
     const pim1 = parseFloat(document.getElementById("pim1").value) || 0;
     const relatorio1 =
         parseFloat(document.getElementById("relatorio1").value) || 0;
     const relatorioFinal =
         parseFloat(document.getElementById("relatorioFinal").value) || 0;
+    const chat1 = parseFloat(document.getElementById("chat1").value) || 0;
+    const tcc1 = parseFloat(document.getElementById("tcc1").value) || 0;
+    const banca = parseFloat(document.getElementById("banca").value) || 0;
     const exame = parseFloat(document.getElementById("exame").value) || 0;
+    con
 
     // Calcular média da disciplina (MD)
     let md = 0;
     switch (tipoDisciplina) {
         case "teoricaTradicional":
-            md = calcularMediaTeoricaTradicional(prova1, prova2, prova3);
+            if(situacaoDisciplina === "dp"){
+                md = prova1;
+            } else{
+                md = prova1*0.9 + ava*0.1;
+            }
             break;
         case "teoricaTecnologica":
-            md = calcularMediaTeoricaTecnologica(prova1, prova2, prova3, pim1, pim2);
+            if(situacaoDisciplina === "dp"){
+                md = prova1;
+            } else{
+                md = prova1*0.7 + pim1*0.2 + ava*0.1;
+            }
             break;
         case "praticaLicenciatura":
-            md = calcularMediaPraticaLicenciatura(
-                relatorio1,
-                relatorio2,
-                relatorioFinal
-            );
+            if(situacaoDisciplina === "dp"){
+                md = relatorio1*0.3 + relatorioFinal*0.7;
+            } else{
+                md = relatorio1*0.2 + relatorioFinal*0.7 + (chat1 === 0 ? 0 : 1);
+            }
             break;
         case "praticaLaboratorio":
-            md = calcularMediaPraticaLaboratorio(relatorio1, relatorio2, prova1);
+            if(situacaoDisciplina === "dp"){
+                md = prova1;
+            } else{
+                md = prova1*0.7 + relatorio1*0.3;
+            }
             break;
         case "tcc":
-            md = calcularMediaTcc(trabalhoCurso, banca);
+            md = tcc1*0.7 + banca*0.3;
             break;
     }
 
     // Arredondamento da MD
-    md = arredondarMedia(md, anoIngresso);
+    if (anoIngresso === "2022" && md >= 5.7 && md < 6) {
+        md = 6;
+    } else if (md >= 6.7 && md < 7) {
+        md = 7;
+    }
+
+    // REVER ESSE PONTO, NÃO RETORNA NA PÁGINA
+    //if (exame === 0) {
+    //    document.getElementById("situacaoResultado").textContent = md.toFixed(2);
+    //}
 
     // Calcular média final (MF)
     let mf = 0;
     if (md < (anoIngresso === "2022" ? 6 : 7)) {
-        mf = calcularMediaFinalComExame(md, exame);
+        mf = md*0.5 + exame*0.5;
     } else {
         mf = md;
     }
 
     // Arredondamento da MF
-    mf = arredondarMedia(mf, anoIngresso);
 
+    // Quando a MF for maior ou igual a 4,75 (quatro vírgula setenta e cinco) e menor que 5,0 (cinco), a MF será arredondada para 5,0 (cinco).
+    
     // Exibir resultados
     document.getElementById("md").textContent = md.toFixed(2);
     document.getElementById("mf").textContent = mf.toFixed(2);
@@ -104,17 +131,6 @@ function mostrarSecao(secaoId, mostrar) {
     secao.style.display = mostrar ? "block" : "none";
 }
 
-function limparSecao(secaoId, limpar) {
-    if (limpar) {
-        const inputs = document
-            .getElementById(secaoId)
-            .querySelectorAll('input[type="number"]');
-        for (const input of inputs) {
-            input.value = "";
-        }
-    }
-}
-
 function limparAll() {
     const inputs = document.querySelectorAll('input[type="number"]');
     for (const input of inputs) {
@@ -127,41 +143,4 @@ function ocultarAll() {
     for (const section of sections) {
         section.style.display = "none";
     }
-}
-
-function calcularMediaTeoricaTradicional(prova1, prova2, prova3) {
-    return (9 * prova1 + prova2 + prova3) / 10;
-}
-
-function calcularMediaTeoricaTecnologica(prova1, prova2, prova3, pim1, pim2) {
-    return (7 * (prova1 + prova2 + prova3) + 2 * (pim1 + pim2)) / 10;
-}
-
-function calcularMediaPraticaLicenciatura(
-    relatorio1,
-    relatorio2,
-    relatorioFinal
-) {
-    return (2 * (relatorio1 + relatorio2) + 7 * relatorioFinal) / 10;
-}
-
-function calcularMediaPraticaLaboratorio(relatorio1, relatorio2, prova1) {
-    return (3 * (relatorio1 + relatorio2) + 7 * prova1) / 10;
-}
-
-function calcularMediaTcc(trabalhoCurso, banca) {
-    return (7 * trabalhoCurso + 3 * banca) / 10;
-}
-
-function calcularMediaFinalComExame(md, exame,) {
-    return (md + exame) / 2;
-}
-
-function arredondarMedia(media, anoIngresso) {
-    if (anoIngresso === "2022" && media >= 5.7 && media < 6) {
-        media = 6;
-    } else if (media >= 6.7 && media < 7) {
-        media = 7;
-    }
-    return media;
 }
