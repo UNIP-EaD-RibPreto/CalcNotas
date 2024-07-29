@@ -53,41 +53,40 @@ function calcular() {
     const tcc1 = parseFloat(document.getElementById("tcc1").value) || 0;
     const banca = parseFloat(document.getElementById("banca").value) || 0;
     const exame = parseFloat(document.getElementById("exame").value) || 0;
-    con
 
     // Calcular média da disciplina (MD)
     let md = 0;
     switch (tipoDisciplina) {
         case "teoricaTradicional":
-            if(situacaoDisciplina === "dp"){
+            if (situacaoDisciplina === "dp") {
                 md = prova1;
-            } else{
-                md = prova1*0.9 + ava*0.1;
+            } else {
+                md = prova1 * 0.9 + ava * 0.1;
             }
             break;
         case "teoricaTecnologica":
-            if(situacaoDisciplina === "dp"){
+            if (situacaoDisciplina === "dp") {
                 md = prova1;
-            } else{
-                md = prova1*0.7 + pim1*0.2 + ava*0.1;
+            } else {
+                md = prova1 * 0.7 + pim1 * 0.2 + ava * 0.1;
             }
             break;
         case "praticaLicenciatura":
-            if(situacaoDisciplina === "dp"){
-                md = relatorio1*0.3 + relatorioFinal*0.7;
-            } else{
-                md = relatorio1*0.2 + relatorioFinal*0.7 + (chat1 === 0 ? 0 : 1);
+            if (situacaoDisciplina === "dp") {
+                md = relatorio1 * 0.3 + relatorioFinal * 0.7;
+            } else {
+                md = relatorio1 * 0.2 + relatorioFinal * 0.7 + (chat1 === 0 ? 0 : 1);
             }
             break;
         case "praticaLaboratorio":
-            if(situacaoDisciplina === "dp"){
+            if (situacaoDisciplina === "dp") {
                 md = prova1;
-            } else{
-                md = prova1*0.7 + relatorio1*0.3;
+            } else {
+                md = prova1 * 0.7 + relatorio1 * 0.3;
             }
             break;
         case "tcc":
-            md = tcc1*0.7 + banca*0.3;
+            md = tcc1 * 0.7 + banca * 0.3;
             break;
     }
 
@@ -98,26 +97,30 @@ function calcular() {
         md = 7;
     }
 
-    // REVER ESSE PONTO, NÃO RETORNA NA PÁGINA
-    //if (exame === 0) {
-    //    document.getElementById("situacaoResultado").textContent = md.toFixed(2);
-    //}
-
     // Calcular média final (MF)
     let mf = 0;
     if (md < (anoIngresso === "2022" ? 6 : 7)) {
-        mf = md*0.5 + exame*0.5;
+        mf = md * 0.5 + exame * 0.5;
     } else {
         mf = md;
     }
 
     // Arredondamento da MF
+    if (mf >= 4.75 && mf < 5) {
+        mf = 5;
+    }
 
-    // Quando a MF for maior ou igual a 4,75 (quatro vírgula setenta e cinco) e menor que 5,0 (cinco), a MF será arredondada para 5,0 (cinco).
-    
     // Exibir resultados
     document.getElementById("md").textContent = md.toFixed(2);
     document.getElementById("mf").textContent = mf.toFixed(2);
+
+    // REVER ESSE PONTO para exibir mensagens mais coerentes
+    if (exame === 0) {
+        alert("Você precisa fazer exame, com nota acima de: " + (10 - md).toFixed(2));
+        document.getElementById("situacaoResultado").textContent = "Você precisa fazer exame, com nota acima de: " + (10 - md).toFixed(2);
+    } else {
+        document.getElementById("situacaoResultado").textContent = "";
+    }
 
     if (mf >= (anoIngresso === "2022" ? 5 : 5)) {
         alert("Aprovado!");

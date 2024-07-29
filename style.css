@@ -66,8 +66,7 @@ button:hover {
 }
 
 /* Esconder seções inicialmente */
-#regras,
-#detalhesMD,
+/* #regras, */
 #secaoPims,
 #secaoRelatorios,
 #secaoRelatoriosLic,
@@ -85,4 +84,8 @@ button:hover {
 .reprovado {
     color: red;
     font-weight: bold;
+}
+
+footer{
+    text-align: center;
 }
