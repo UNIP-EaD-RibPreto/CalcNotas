@@ -26,6 +26,7 @@ function selecaoItens() {
             mostrarSecao("secaoAva", situacaoDisciplina === "regular");
             mostrarSecao("secaoExame", situacaoDisciplina === "regular" || "dp");
             mostrarSecao("avaliacaoTeoricasTecnologos", situacaoDisciplina === "regular" || "dp");
+            mostrarSecao("avaliacaoPim", situacaoDisciplina === "regular" || "dp");
             break;
         case "praticaLaboratorio":
             mostrarSecao("secaoProvas", situacaoDisciplina === "regular" || "dp");
@@ -43,6 +44,7 @@ function selecaoItens() {
         case "tcc":
             mostrarSecao("secaoTcc", situacaoDisciplina === "regular" || "dp");
             mostrarSecao("avaliacaoTcc", situacaoDisciplina === "regular" || "dp");
+            mostrarSecao("avaliacaoEstagio", situacaoDisciplina === "regular" || "dp");
             break;
     }
 }
