@@ -2,37 +2,47 @@ function selecaoItens() {
     // Obter valores dos campos
     const situacaoDisciplina = document.getElementById("situacaoDisciplina").value;
     const tipoDisciplina = document.getElementById("tipoDisciplina").value;
+    const anoIngresso = document.getElementById("anoIngresso").value;
 
     // Limpar campos para não ficar nota calculada errada
     limparAll();
     ocultarAll();
 
+    //Incluir Avaliação de Aprendizagem
+    mostrarSecao("avaliacaoAprendizagem2023", anoIngresso === "2023");
+    mostrarSecao("avaliacaoAprendizagem2022", anoIngresso === "2022");
+    
     // Definir quais inputs serão inseridos
     switch (tipoDisciplina) {
         case "teoricaTradicional":
             mostrarSecao("secaoProvas", situacaoDisciplina === "regular" || "dp");
             mostrarSecao("secaoAva", situacaoDisciplina === "regular");
             mostrarSecao("secaoExame", situacaoDisciplina === "regular" || "dp");
+            mostrarSecao("avaliacaoTeoricasGraduacao", situacaoDisciplina === "regular" || "dp");
             break;
         case "teoricaTecnologica":
             mostrarSecao("secaoProvas", situacaoDisciplina === "regular" || "dp");
             mostrarSecao("secaoPims", situacaoDisciplina === "regular");
             mostrarSecao("secaoAva", situacaoDisciplina === "regular");
             mostrarSecao("secaoExame", situacaoDisciplina === "regular" || "dp");
+            mostrarSecao("avaliacaoTeoricasTecnologos", situacaoDisciplina === "regular" || "dp");
             break;
         case "praticaLaboratorio":
             mostrarSecao("secaoProvas", situacaoDisciplina === "regular" || "dp");
             mostrarSecao("secaoRelatorios", situacaoDisciplina === "regular");
             mostrarSecao("secaoExame", situacaoDisciplina === "regular" || "dp");
+            mostrarSecao("avaliacaoPraticaLabotarios", situacaoDisciplina === "regular" || "dp");
             break;
         case "praticaLicenciatura":
             mostrarSecao("secaoRelatorios", situacaoDisciplina === "regular" || "dp");
             mostrarSecao("secaoRelatoriosLic", situacaoDisciplina === "regular" || "dp");
             mostrarSecao("secaoChat", situacaoDisciplina === "regular");
             mostrarSecao("secaoExame", situacaoDisciplina === "regular" || "dp");
+            mostrarSecao("avaliacaoPraticaLicenciaturas", situacaoDisciplina === "regular" || "dp");
             break;
         case "tcc":
             mostrarSecao("secaoTcc", situacaoDisciplina === "regular" || "dp");
+            mostrarSecao("avaliacaoTcc", situacaoDisciplina === "regular" || "dp");
             break;
     }
 }
@@ -114,17 +124,17 @@ function calcular() {
     document.getElementById("md").textContent = md.toFixed(2);
     document.getElementById("mf").textContent = mf.toFixed(2);
 
-    // REVER ESSE PONTO para exibir mensagens mais coerentes
-    if (exame === 0) {
-        alert("Você precisa fazer exame, com nota acima de: " + (10 - md).toFixed(2));
-        document.getElementById("situacaoResultado").textContent = "Você precisa fazer exame, com nota acima de: " + (10 - md).toFixed(2);
-    } else {
-        document.getElementById("situacaoResultado").textContent = "";
-    }
-
     if (mf >= (anoIngresso === "2022" ? 5 : 5)) {
+        document.getElementById("situacaoResultado").textContent = "Aprovado";
+        document.getElementById("situacaoResultado").className = "aprovado";
         alert("Aprovado!");
+    } else if (exame === 0) {
+        document.getElementById("situacaoResultado").textContent = "Você precisa fazer exame, com nota acima de: " + (10 - md).toFixed(2);
+        document.getElementById("situacaoResultado").className = "reprovado";
+        alert("Você precisa fazer exame, com nota acima de: " + (10 - md).toFixed(2));
     } else {
+        document.getElementById("situacaoResultado").textContent = "Reprovado";
+        document.getElementById("situacaoResultado").className = "reprovado";
         alert("Reprovado!");
     }
 }
@@ -139,6 +149,9 @@ function limparAll() {
     for (const input of inputs) {
         input.value = "";
     }
+    document.getElementById("situacaoResultado").textContent = "";
+    document.getElementById("md").textContent = "";
+    document.getElementById("mf").textContent = "";
 }
 
 function ocultarAll() {

@@ -17,372 +17,432 @@
 
   <body>
     <header>
-      <h1>Cálculo de Notas UNIP</h1>
+      <h1>Cálculo de Notas - UNIP</h1>
+      <p>EaD e FLEX</p>
     </header>
 
-    <div id="formCalculo">
-      <label for="situacaoDisciplina">Situação:</label>
-      <select id="situacaoDisciplina" onchange="selecaoItens()">
-        <option value="regular" selected>Regular do semestre</option>
-        <option value="dp">Dependência / Adaptação</option>
-      </select>
+    <main>
+      <div id="formCalculo">
+        <label for="situacaoDisciplina">Situação:</label>
+        <select id="situacaoDisciplina" onchange="selecaoItens()">
+          <option value="regular" selected>Regular do semestre</option>
+          <option value="dp">Dependência / Adaptação</option>
+        </select>
 
-      <label for="anoIngresso">Ano de Ingresso:</label>
-      <select id="anoIngresso">
-        <option value="2022">2022 ou Anterior</option>
-        <option value="2023" selected>2023 em diante</option>
-      </select>
+        <label for="anoIngresso">Ano de Ingresso:</label>
+        <select id="anoIngresso" onchange="selecaoItens()">
+          <option value="2022">2022 ou Anterior</option>
+          <option value="2023" selected>2023 em diante</option>
+        </select>
 
-      <label for="tipoDisciplina">Tipo de Disciplina:</label>
-      <select id="tipoDisciplina" onchange="selecaoItens()">
-        <option value="teoricaTradicional">
-          Teórica/Estudos Disciplinares (Tradicional)
-        </option>
-        <option value="teoricaTecnologica">
-          Teórica/Estudos Disciplinares (Tecnólogo)
-        </option>
-        <option value="praticaLaboratorio">Prática (Laboratório)</option>
-        <option value="praticaLicenciatura">
-          Prática (Licenciaturas, Farmácia e Enfermagem)
-        </option>
-        <option value="tcc">Trabalho de Curso</option>
-      </select>
+        <label for="tipoDisciplina">Tipo de Disciplina:</label>
+        <select id="tipoDisciplina" onchange="selecaoItens()">
+          <option value="teoricaTradicional">
+            Teórica/Estudos Disciplinares (Tradicional)
+          </option>
+          <option value="teoricaTecnologica">
+            Teórica/Estudos Disciplinares (Tecnólogo)
+          </option>
+          <option value="praticaLaboratorio">Prática (Laboratório)</option>
+          <option value="praticaLicenciatura">
+            Prática (Licenciaturas, Farmácia e Enfermagem)
+          </option>
+          <option value="tcc">Trabalho de Curso</option>
+        </select>
 
-      <section id="secaoProvas">
-        <label for="prova1">Nota da Avaliação ou Substitutiva:</label>
-        <input type="number" id="prova1" min="0" max="10" step="0.1" />
-      </section>
+        <section id="secaoProvas">
+          <label for="prova1">Nota da Avaliação ou Substitutiva:</label>
+          <input type="number" id="prova1" min="0" max="10" step="0.1" />
+        </section>
 
-      <section id="secaoAva">
-        <label for="ava">AVA (notas dos Questionários):</label>
-        <input type="number" id="ava" min="0" max="10" step="0.1" />
-      </section>
+        <section id="secaoAva">
+          <label for="ava">AVA (notas dos Questionários):</label>
+          <input type="number" id="ava" min="0" max="10" step="0.1" />
+        </section>
 
-      <section id="secaoPims">
-        <label for="pim1">PIM:</label>
-        <input type="number" id="pim1" min="0" max="10" step="0.1" />
-      </section>
+        <section id="secaoPims" class="iniciarOculto">
+          <label for="pim1">PIM:</label>
+          <input type="number" id="pim1" min="0" max="10" step="0.1" />
+        </section>
 
-      <section id="secaoRelatorios">
-        <label for="relatorio1">Relatório:</label>
-        <input type="number" id="relatorio1" min="0" max="10" step="0.1" />
-      </section>
+        <section id="secaoRelatorios" class="iniciarOculto">
+          <label for="relatorio1">Relatório:</label>
+          <input type="number" id="relatorio1" min="0" max="10" step="0.1" />
+        </section>
 
-      <section id="secaoRelatoriosLic">
-        <label for="relatorioFinal">Relatório Final:</label>
-        <input type="number" id="relatorioFinal" min="0" max="10" step="0.1" />
-      </section>
+        <section id="secaoRelatoriosLic" class="iniciarOculto">
+          <label for="relatorioFinal">Relatório Final:</label>
+          <input
+            type="number"
+            id="relatorioFinal"
+            min="0"
+            max="10"
+            step="0.1"
+          />
+        </section>
 
-      <section id="secaoChat">
-        <label for="chat">Chat:</label>
-        <input type="number" id="chat1" min="0" max="1" step="0.1" />
-      </section>
+        <section id="secaoChat" class="iniciarOculto">
+          <label for="chat">Chat:</label>
+          <input type="number" id="chat1" min="0" max="1" step="0.1" />
+        </section>
 
-      <section id="secaoTcc">
-        <label for="tcc">Trabalho de Conclusão:</label>
-        <input type="number" id="tcc1" min="0" max="10" step="0.1" />
+        <section id="secaoTcc" class="iniciarOculto">
+          <label for="tcc">Trabalho de Conclusão:</label>
+          <input type="number" id="tcc1" min="0" max="10" step="0.1" />
 
-        <label for="banca">Banca:</label>
-        <input type="number" id="banca" min="0" max="10" step="0.1" />
-      </section>
+          <label for="banca">Banca:</label>
+          <input type="number" id="banca" min="0" max="10" step="0.1" />
+        </section>
 
-      <section id="secaoExame">
-        <label for="exame">Exame:</label>
-        <input type="number" id="exame" min="0" max="10" step="0.1" />
-      </section>
+        <section id="secaoExame">
+          <label for="exame">Exame:</label>
+          <input type="number" id="exame" min="0" max="10" step="0.1" />
+        </section>
 
-      <button type="button" id="btCalcular" onclick="calcular()">
-        Calcular
-      </button>
-      <button type="button" id="btLimpar" onclick="limparAll()">Limpar</button>
-    </div>
+        <button type="button" id="btCalcular" onclick="calcular()">
+          Calcular
+        </button>
+        <button type="button" id="btLimpar" onclick="limparAll()">
+          Limpar
+        </button>
+      </div>
 
-    <div id="resultado">
-      <h2>Resultado</h2>
+      <div id="resultado">
+        <h2>Resultado</h2>
+        <p id="situacaoTexto">
+          Situação:
+          <strong><span id="situacaoResultado" class=""></span></strong>
+        </p>
+        <p>
+          Média da Disciplina (MD):
+          <strong><span id="md" class=""></span></strong>
+        </p>
+        <p>
+          Média Final (MF): <strong><span id="mf" class=""></span></strong>
+        </p>
+      </div>
 
-      <section id="situacao">
-        <p id="situacaoTexto">Situação: <span id="situacaoResultado" class=""></span></p>
-      </section>
+      <div id="regras">
+        <h3>COMPOSIÇÃO DA MÉDIA</h3>
+        <section id="avaliacaoTeoricasGraduacao">
+          <p>
+            <strong
+              >I – Disciplinas Teóricas e Estudos Disciplinares– Cursos
+              Tradicionais</strong
+            >
+          </p>
+          <p><strong>Regular</strong></p>
+          <p>
+            9 x Prova + 1 x AVA<br />
 
-      <p>Média da Disciplina (MD): <span id="md" class=""></span></p>
-      <p>Média Final (MF): <span id="mf" class=""></span></p>
-    </div>
+            MD = ------------------- .<br />
 
-    <div id="regras">
-      <h3 class="bg-tertiary text-white h5 p-2" id="ate2022">
-        AVALIAÇÃO DE APRENDIZAGEM – ATÉ 2022
-      </h3>
-      <p>
-        <strong
-          >(Somente para os alunos matriculados no currículo 2022 e
-          anteriores)</strong
-        >
-      </p>
-      <p>
-        O aluno somente poderá ser aprovado e/ou prestar exames com o mínimo de
-        75% (setenta e cinco por cento) de frequência às atividades programadas
-        para a disciplina.
-      </p>
-      <p>
-        Os critérios de promoção envolvendo simultaneamente a frequência e o
-        aproveitamento escolar são os seguintes:
-      </p>
-      <ul>
-        <li>
-          Se a frequência do aluno for inferior a 75% (setenta e cinco por
-          cento), ele estará reprovado na disciplina;
-        </li>
-      </ul>
-      <p>
-        a) Se a Média da Disciplina MD for igual ou superior a 6,0 (seis), o
-        aluno estará aprovado na disciplina. A Média Final é igual à (MF = MD),
-        sem necessidade de realizar o Exame;<br />
-        b) Se MD for inferior a 6,0 (seis), o aluno deverá submeter-se ao Exame
-        da disciplina; a Média Final (MF) da disciplina para o aluno que realiza
-        o Exame é a média aritmética MF = (MD + EX)/2.<br />
-        c) Se MF for igual ou superior a 5,0 (cinco), o aluno estará aprovado na
-        disciplina;<br />
-        d) O aluno estará reprovado quando obtiver MF inferior a 5,0 (cinco) e
-        ficará sujeito ao regime de dependência na disciplina.<br />
-        e) Quando a MD for maior ou igual a 5,7 (cinco vírgula sete) e menor que
-        6,0 (seis), a MD será arredondada para 6,0 (seis). Quando a MF for maior
-        ou igual a 4,75 (quatro vírgula setenta e cinco) e menor que 5,0
-        (cinco), a MF será arredondada para 5,0 (cinco).
-      </p>
-      <p>
-        A Avaliação Presencial (AP) de cada disciplina poderá ser composta de
-        questões objetivas e questões discursivas, de sorte que as questões
-        discursivas tenham peso de 50% (cinquenta por cento) do valor da AP
-        (Avaliação Presencial).
-      </p>
-      <p>
-        O Exame de cada disciplina será composto de modo similar à Avaliação
-        Presencial em estrutura e tipos de questões, excetuando-se TCC, estágios
-        supervisionados e as disciplinas práticas.
-      </p>
-      <p>
-        A Avaliação Substitutiva de cada disciplina será composta de modo
-        similar à Avaliação Presencial em estrutura, pesos e tipos de questões.
-      </p>
-      <p>
-        Para incentivar o uso pelo aluno das novas tecnologias de comunicação,
-        interação e informação indispensáveis para uma formação de qualidade em
-        um curso da EaD, as avaliações virtuais terão 10% (dez por cento) de sua
-        composição atribuídos a título de participação e interação no ambiente
-        virtual de aprendizagem.
-      </p>
-      <h3 class="" id="apartir2023">
-        AVALIAÇÃO DE APRENDIZAGEM - A PARTIR DE 2023
-      </h3>
-      <p>
-        <strong
-          >(Somente para os alunos matriculados no currículo 2023 em
-          diante)</strong
-        >
-      </p>
-      <p>
-        O aluno somente poderá ser aprovado e/ou prestar exames com o mínimo de
-        75% (setenta e cinco por cento) de frequência às atividades programadas
-        para a disciplina.
-      </p>
-      <p>
-        Os critérios de promoção envolvendo simultaneamente a frequência e o
-        aproveitamento escolar são os seguintes:
-      </p>
-      <ul>
-        <li>
-          Se a frequência do aluno for inferior a 75% (setenta e cinco por
-          cento), ele estará reprovado na disciplina;
-        </li>
-      </ul>
-      <p>
-        a) Se a Média da Disciplina MD for igual ou superior a 7,0 (sete), o
-        aluno estará aprovado na disciplina. A Média Final é igual à (MF = MD),
-        sem necessidade de realizar o Exame;<br />
-        b) Se MD for inferior a 7,0 (sete), o aluno deverá submeter-se ao Exame
-        da disciplina; a Média Final (MF) da disciplina para o aluno que realiza
-        o Exame é a média aritmética MF = (MD + EX)/2.<br />
-        c) Se MF for igual ou superior a 5,0 (cinco), o aluno estará aprovado na
-        disciplina;<br />
-        d) O aluno estará reprovado quando obtiver MF inferior a 5,0 (cinco) e
-        ficará sujeito ao regime de dependência na disciplina.<br />
-        e) Quando a MD for maior ou igual a 6,7 (seis vírgula sete) e menor que
-        7,0 (sete), a MD será arredondada para 7,0 (sete). Quando a MF for maior
-        ou igual a 4,75 (quatro vírgula setenta e cinco) e menor que 5,0
-        (cinco), a MF será arredondada para 5,0 (cinco).
-      </p>
-      <p>
-        A Avaliação Presencial (AP) de cada disciplina poderá ser composta de
-        questões objetivas e questões discursivas, de sorte que as questões
-        discursivas tenham peso de 50% (cinquenta por cento) do valor da AP
-        (Avaliação Presencial).
-      </p>
-      <p>
-        O Exame de cada disciplina será composto de modo similar à Avaliação
-        Presencial em estrutura e tipos de questões, excetuando-se TCC, estágios
-        supervisionados e as disciplinas práticas.
-      </p>
-      <p>
-        A Avaliação Substitutiva de cada disciplina será composta de modo
-        similar à Avaliação Presencial em estrutura, pesos e tipos de questões.
-      </p>
-      <p>
-        Para incentivar o uso pelo aluno das novas tecnologias de comunicação,
-        interação e informação indispensáveis para uma formação de qualidade em
-        um curso da EaD, as avaliações virtuais terão 10% (dez por cento) de sua
-        composição atribuídos a título de participação e interação no ambiente
-        virtual de aprendizagem.
-      </p>
-      <h3 class="bg-tertiary text-white h5 p-2" id="media">
-        COMPOSIÇÃO DA MÉDIA
-      </h3>
-      <p>
-        <strong
-          >I – Disciplinas Teóricas e Estudos Disciplinares– Cursos
-          Tradicionais</strong
-        >
-      </p>
-      <p><strong>Regular</strong></p>
-      <p>
-        9 x Prova + 1 x AVA<br />
+            10
+          </p>
+          <p>
+            (MD + EX)<br />
 
-        MD = ------------------- .<br />
+            MF = ------------------- .<br />
 
-        10
-      </p>
-      <p>
-        (MD + EX)<br />
+            2
+          </p>
+          <p><strong>DP</strong></p>
+          <p>MD = PROVA</p>
+          <p>
+            (MD + EX)<br />
 
-        MF = ------------------- .<br />
+            MF = --------------.<br />
 
-        2
-      </p>
-      <p><strong>DP</strong></p>
-      <p>MD = PROVA</p>
-      <p>
-        (MD + EX)<br />
+            2
+          </p>
+        </section>
 
-        MF = --------------.<br />
+        <section id="avaliacaoTeoricasTecnologos" class="iniciarOculto">
+          <p>
+            <strong
+              >II - Disciplinas Teóricas e Estudos Disciplinares - Cursos
+              Tecnológicos - exceto disciplinas práticas de Radiologia e
+              Estética</strong
+            >
+          </p>
+          <p><strong>Regular</strong></p>
+          <p>
+            7 x Prova + 2 x PIM + 1 x AVA<br />
 
-        2
-      </p>
-      <p>
-        <strong
-          >II - Disciplinas Teóricas e Estudos Disciplinares - Cursos
-          Tecnológicos - exceto disciplinas práticas de Radiologia e
-          Estética</strong
-        >
-      </p>
-      <p><strong>Regular</strong></p>
-      <p>
-        7 x Prova + 2 x PIM + 1 x AVA<br />
+            MD = ------------------------ .<br />
 
-        MD = ------------------------ .<br />
+            10
+          </p>
+          <p>
+            MD + EX<br />
 
-        10
-      </p>
-      <p>
-        MD + EX<br />
+            MF = ------------------- .<br />
 
-        MF = ------------------- .<br />
+            2
+          </p>
+          <p><strong>DP/AD</strong></p>
+          <p>MD: PROVA</p>
+          <p>
+            MD + EX<br />
 
-        2
-      </p>
-      <p><strong>DP/AD</strong></p>
-      <p>MD: PROVA</p>
-      <p>
-        MD + EX<br />
+            MF = --------------.<br />
 
-        MF = --------------.<br />
+            2
+          </p>
+        </section>
 
-        2
-      </p>
-      <p>
-        <strong
-          >III - Disciplinas Cunho Prático / Prática Docente: Licenciaturas,
-          Farmácia e Enfermagem</strong
-        >
-      </p>
-      <p><strong>Regular</strong></p>
-      <p>
-        2 x Relatório + 7 x Relatório Final + 1 x CHAT<br />
+        <section id="avaliacaoPraticaLicenciaturas" class="iniciarOculto">
+          <p>
+            <strong
+              >III - Disciplinas Cunho Prático / Prática Docente: Licenciaturas,
+              Farmácia e Enfermagem</strong
+            >
+          </p>
+          <p><strong>Regular</strong></p>
+          <p>
+            2 x Relatório + 7 x Relatório Final + 1 x CHAT<br />
 
-        MD = -------------------------------------- .<br />
+            MD = -------------------------------------- .<br />
 
-        10
-      </p>
-      <p>
-        (MD + Exame)<br />
+            10
+          </p>
+          <p>
+            (MD + Exame)<br />
 
-        MF = ------------------- .<br />
+            MF = ------------------- .<br />
 
-        2
-      </p>
-      <p><strong>DP</strong></p>
-      <p>
-        MD: 3 x Relatório + 7 x Relatório Final<br />
+            2
+          </p>
+          <p><strong>DP</strong></p>
+          <p>
+            MD: 3 x Relatório + 7 x Relatório Final<br />
 
-        MD = -------------------------------------- .<br />
+            MD = -------------------------------------- .<br />
 
-        10
-      </p>
-      <p>
-        MD + EX<br />
+            10
+          </p>
+          <p>
+            MD + EX<br />
 
-        MF = ------------------- .<br />
+            MF = ------------------- .<br />
 
-        2
-      </p>
-      <p><strong>IV - Disciplinas Práticas (laboratórios)</strong></p>
-      <p>
-        <strong
-          >Cursos: Biomedicina-CST / Estética e Cosmética / Educação Física /
-          Enfermagem / Farmácia / Física / Fisioterapia / Nutrição / Química /
-          Ciências Biológicas / Engenharia Civil e Produção / Radiologia</strong
-        >
-      </p>
-      <p><strong>Regular</strong></p>
-      <p>
-        3 x Relatório + 7 x Prova<br />
+            2
+          </p>
+        </section>
 
-        MD = ------------------------ .<br />
+        <section id="avaliacaoPraticaLabotarios" class="iniciarOculto">
+          <p><strong>IV - Disciplinas Práticas (laboratórios)</strong></p>
+          <p>
+            <strong
+              >Cursos: Biomedicina-CST / Estética e Cosmética / Educação Física
+              / Enfermagem / Farmácia / Física / Fisioterapia / Nutrição /
+              Química / Ciências Biológicas / Engenharia Civil e Produção /
+              Radiologia</strong
+            >
+          </p>
+          <p><strong>Regular</strong></p>
+          <p>
+            3 x Relatório + 7 x Prova<br />
 
-        10
-      </p>
-      <p>
-        MD + EX<br />
+            MD = ------------------------ .<br />
 
-        MF = --------------- .<br />
+            10
+          </p>
+          <p>
+            MD + EX<br />
 
-        2
-      </p>
-      <p><strong>DP</strong></p>
-      <p>MD: PROVA</p>
-      <p>
-        MD + EX<br />
+            MF = --------------- .<br />
 
-        MF = ------------------- .<br />
+            2
+          </p>
+          <p><strong>DP</strong></p>
+          <p>MD: PROVA</p>
+          <p>
+            MD + EX<br />
 
-        2
-      </p>
-      <p><strong>V - Trabalho de Curso</strong></p>
-      <p><strong>Regular e DP</strong></p>
-      <p>
-        7 x Trabalho + 3 x Banca<br />
+            MF = ------------------- .<br />
 
-        MD = -------------------------------------- .<br />
+            2
+          </p>
+        </section>
 
-        10
-      </p>
-      <p><strong>VI – Estágio Curricular</strong></p>
-      <p>
-        <strong>Administração e Ciências Contábeis:</strong>
-        MA (média de Aproveitamento)<br />
-        <strong>Serviço social e Licenciaturas</strong>: CH - Carga Horária
-      </p>
-      <p><strong>VII – Projeto Intergrado Multidisciplinar – PIM </strong></p>
-      <p><strong>Regular e DP: </strong>MA (média de Aproveitamento)</p>
-    </div>
+        <section id="avaliacaoTcc" class="iniciarOculto">
+          <p><strong>V - Trabalho de Curso</strong></p>
+          <p><strong>Regular e DP</strong></p>
+          <p>
+            7 x Trabalho + 3 x Banca<br />
+
+            MD = -------------------------------------- .<br />
+
+            10
+          </p>
+        </section>
+
+        <section id="avaliacaoEstagio" class="iniciarOculto">
+          <p><strong>VI – Estágio Curricular</strong></p>
+          <p>
+            <strong>Administração e Ciências Contábeis:</strong>
+            MA (média de Aproveitamento)<br />
+            <strong>Serviço social e Licenciaturas</strong>: CH - Carga Horária
+          </p>
+        </section>
+
+        <section id="avaliacaoPim" class="iniciarOculto">
+          <p>
+            <strong>VII – Projeto Intergrado Multidisciplinar – PIM </strong>
+          </p>
+          <p><strong>Regular e DP: </strong>MA (média de Aproveitamento)</p>
+        </section>
+
+        <section id="avaliacaoAprendizagem2022" class="iniciarOculto">
+          <h3>AVALIAÇÃO DE APRENDIZAGEM – ATÉ 2022</h3>
+          <p>
+            <strong
+              >(Somente para os alunos matriculados no currículo 2022 e
+              anteriores)</strong
+            >
+          </p>
+          <p>
+            O aluno somente poderá ser aprovado e/ou prestar exames com o mínimo
+            de 75% (setenta e cinco por cento) de frequência às atividades
+            programadas para a disciplina.
+          </p>
+          <p>
+            Os critérios de promoção envolvendo simultaneamente a frequência e o
+            aproveitamento escolar são os seguintes:
+          </p>
+          <ul>
+            <li>
+              Se a frequência do aluno for inferior a 75% (setenta e cinco por
+              cento), ele estará reprovado na disciplina;
+            </li>
+          </ul>
+          <ol type="a">
+            <li>
+              Se a Média da Disciplina MD for igual ou superior a 6,0 (seis), o
+              aluno estará aprovado na disciplina. A Média Final é igual à (MF =
+              MD), sem necessidade de realizar o Exame;
+            </li>
+            <li>
+              Se MD for inferior a 6,0 (seis), o aluno deverá submeter-se ao
+              Exame da disciplina; a Média Final (MF) da disciplina para o aluno
+              que realiza o Exame é a média aritmética MF = (MD + EX)/2.
+            </li>
+            <li>
+              Se MF for igual ou superior a 5,0 (cinco), o aluno estará aprovado
+              na disciplina;
+            </li>
+            <li>
+              O aluno estará reprovado quando obtiver MF inferior a 5,0 (cinco)
+              e ficará sujeito ao regime de dependência na disciplina.
+            </li>
+            <li>
+              Quando a MD for maior ou igual a 5,7 (cinco vírgula sete) e menor
+              que 6,0 (seis), a MD será arredondada para 6,0 (seis). Quando a MF
+              for maior ou igual a 4,75 (quatro vírgula setenta e cinco) e menor
+              que 5,0 (cinco), a MF será arredondada para 5,0 (cinco).
+            </li>
+          </ol>
+          <p>
+            A Avaliação Presencial (AP) de cada disciplina poderá ser composta
+            de questões objetivas e questões discursivas, de sorte que as
+            questões discursivas tenham peso de 50% (cinquenta por cento) do
+            valor da AP (Avaliação Presencial).
+          </p>
+          <p>
+            O Exame de cada disciplina será composto de modo similar à Avaliação
+            Presencial em estrutura e tipos de questões, excetuando-se TCC,
+            estágios supervisionados e as disciplinas práticas.
+          </p>
+          <p>
+            A Avaliação Substitutiva de cada disciplina será composta de modo
+            similar à Avaliação Presencial em estrutura, pesos e tipos de
+            questões.
+          </p>
+          <p>
+            Para incentivar o uso pelo aluno das novas tecnologias de
+            comunicação, interação e informação indispensáveis para uma formação
+            de qualidade em um curso da EaD, as avaliações virtuais terão 10%
+            (dez por cento) de sua composição atribuídos a título de
+            participação e interação no ambiente virtual de aprendizagem.
+          </p>
+        </section>
+
+        <section id="avaliacaoAprendizagem2023">
+          <h3>AVALIAÇÃO DE APRENDIZAGEM - A PARTIR DE 2023</h3>
+          <p>
+            <strong
+              >(Somente para os alunos matriculados no currículo 2023 em
+              diante)</strong
+            >
+          </p>
+          <p>
+            O aluno somente poderá ser aprovado e/ou prestar exames com o mínimo
+            de 75% (setenta e cinco por cento) de frequência às atividades
+            programadas para a disciplina.
+          </p>
+          <p>
+            Os critérios de promoção envolvendo simultaneamente a frequência e o
+            aproveitamento escolar são os seguintes:
+          </p>
+          <ul>
+            <li>
+              Se a frequência do aluno for inferior a 75% (setenta e cinco por
+              cento), ele estará reprovado na disciplina;
+            </li>
+          </ul>
+          <ol type="a">
+            <li>
+              Se a Média da Disciplina MD for igual ou superior a 7,0 (sete),
+              o aluno estará aprovado na disciplina. A Média Final é igual à (MF
+              = MD), sem necessidade de realizar o Exame;
+            </li>
+            <li>
+              Se MD for inferior a 7,0 (sete), o aluno deverá submeter-se ao
+              Exame da disciplina; a Média Final (MF) da disciplina para o aluno
+              que realiza o Exame é a média aritmética MF = (MD + EX)/2.
+            </li>
+            <li>
+              Se MF for igual ou superior a 5,0 (cinco), o aluno estará aprovado
+              na disciplina;
+            </li>
+            <li>
+              O aluno estará reprovado quando obtiver MF inferior a 5,0 (cinco)
+              e ficará sujeito ao regime de dependência na disciplina.
+            </li>
+            <li>
+              Quando a MD for maior ou igual a 6,7 (seis vírgula sete) e menor
+              que 7,0 (sete), a MD será arredondada para 7,0 (sete). Quando a MF
+              for maior ou igual a 4,75 (quatro vírgula setenta e cinco) e menor
+              que 5,0 (cinco), a MF será arredondada para 5,0 (cinco).
+            </li>
+          </ol>
+          <p>
+            A Avaliação Presencial (AP) de cada disciplina poderá ser composta
+            de questões objetivas e questões discursivas, de sorte que as
+            questões discursivas tenham peso de 50% (cinquenta por cento) do
+            valor da AP (Avaliação Presencial).
+          </p>
+          <p>
+            O Exame de cada disciplina será composto de modo similar à Avaliação
+            Presencial em estrutura e tipos de questões, excetuando-se TCC,
+            estágios supervisionados e as disciplinas práticas.
+          </p>
+          <p>
+            A Avaliação Substitutiva de cada disciplina será composta de modo
+            similar à Avaliação Presencial em estrutura, pesos e tipos de
+            questões.
+          </p>
+          <p>
+            Para incentivar o uso pelo aluno das novas tecnologias de
+            comunicação, interação e informação indispensáveis para uma formação
+            de qualidade em um curso da EaD, as avaliações virtuais terão 10%
+            (dez por cento) de sua composição atribuídos a título de
+            participação e interação no ambiente virtual de aprendizagem.
+          </p>
+        </section>
+      </div>
+    </main>
 
     <footer>
       <p>Elaborado por Sidney Moretto</p>

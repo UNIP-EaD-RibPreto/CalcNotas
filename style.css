@@ -11,20 +11,27 @@
     --color-warning: #f7e704;
 }
 
+header{
+    text-align: center;
+}
+
 body {
     font-family: sans-serif;
     margin: 0;
     padding: 20px;
+}
+
+main{
     display: inline-block;
 }
 
-h1 {
-    text-align: center;
-    margin-bottom: 20px;
+#formCalculo{
+    width: 400px;
+    padding: 20px;
 }
 
 form {
-    width: 400px;
+    width: 100%;
     margin: 0 auto;
     padding: 20px;
     border: 1px solid #ccc;
@@ -33,7 +40,7 @@ form {
 
 label {
     display: block;
-    margin-bottom: 5px;
+    margin-top: 10px;
 }
 
 input[type="number"],
@@ -46,6 +53,7 @@ select {
 }
 
 button {
+    margin: 10px;
     background-color: #4CAF50;
     color: white;
     padding: 10px 20px;
@@ -59,19 +67,19 @@ button:hover {
 }
 
 #resultado {
+    width: 400px;
     margin-top: 20px;
     padding: 20px;
     border: 1px solid #ccc;
     border-radius: 5px;
 }
 
+#regras{
+    width: 800px;
+}
+
 /* Esconder seções inicialmente */
-/* #regras, */
-#secaoPims,
-#secaoRelatorios,
-#secaoRelatoriosLic,
-#secaoChat,
-#secaoTcc {
+.iniciarOculto {
     display: none;
 }
 
