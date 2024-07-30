@@ -28,6 +28,7 @@ main{
 #formCalculo{
     width: 400px;
     padding: 20px;
+    float: left;
 }
 
 form {
@@ -67,15 +68,17 @@ button:hover {
 }
 
 #resultado {
-    width: 400px;
+    width: 300px;
     margin-top: 20px;
     padding: 20px;
     border: 1px solid #ccc;
     border-radius: 5px;
+    float: left;
 }
 
 #regras{
-    width: 800px;
+    width: 50%;
+    float: right;
 }
 
 /* Esconder seções inicialmente */
@@ -91,6 +94,7 @@ button:hover {
 
 .reprovado {
     color: red;
+    font-size: 18px;
     font-weight: bold;
 }
 

@@ -129,7 +129,7 @@ function calcular() {
         document.getElementById("situacaoResultado").className = "aprovado";
         alert("Aprovado!");
     } else if (exame === 0) {
-        document.getElementById("situacaoResultado").textContent = "Você precisa fazer exame, com nota acima de: " + (10 - md).toFixed(2);
+        document.getElementById("situacaoResultado").textContent = "Você precisa fazer exame, com pelo menos " + (10 - md).toFixed(2) + " pontos.";
         document.getElementById("situacaoResultado").className = "reprovado";
         alert("Você precisa fazer exame, com nota acima de: " + (10 - md).toFixed(2));
     } else {
