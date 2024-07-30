@@ -129,15 +129,15 @@ function calcular() {
     if (mf >= (anoIngresso === "2022" ? 5 : 5)) {
         document.getElementById("situacaoResultado").textContent = "Aprovado";
         document.getElementById("situacaoResultado").className = "aprovado";
-        alert("Aprovado!");
+        //alert("Aprovado!");
     } else if (exame === 0) {
         document.getElementById("situacaoResultado").textContent = "Você precisa fazer exame, com pelo menos " + (10 - md).toFixed(2) + " pontos.";
         document.getElementById("situacaoResultado").className = "reprovado";
-        alert("Você precisa fazer exame, com nota acima de: " + (10 - md).toFixed(2));
+        //alert("Você precisa fazer exame, com nota acima de: " + (10 - md).toFixed(2));
     } else {
         document.getElementById("situacaoResultado").textContent = "Reprovado";
         document.getElementById("situacaoResultado").className = "reprovado";
-        alert("Reprovado!");
+        //alert("Reprovado!");
     }
 }
 

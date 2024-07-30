@@ -110,3 +110,8 @@ button {
 footer {
     text-align: center;
 }
+
+math {
+    font-size: 24px;
+    margin: 20px;
+}
