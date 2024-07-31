@@ -162,3 +162,9 @@ function ocultarAll() {
         section.style.display = "none";
     }
 }
+
+function validarInput(input, limite) {
+    if (input.value > limite) {
+        input.value = limite;
+    }
+}
