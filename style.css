@@ -38,14 +38,6 @@ div {
     float: left;
 }
 
-@media screen and (max-width: 500px) {
-    #formCalculo, math, #regras {
-        width: 95%;
-        /* padding: 20px; */
-    }
-}
-
-
 label {
     display: block;
     margin-top: 10px;
@@ -117,4 +109,11 @@ button {
 math {
     font-size: 4vmin;
     padding: 20px;
+}
+
+@media screen and (max-width: 600px) {
+    #formCalculo, math, #regras {
+        width: 95%;
+        /* padding: 20px; */
+    }
 }
